@@ -1,0 +1,77 @@
+body { 
+  font-family: 'Ubuntu', sans-serif; 
+  font-size: 14pt;      
+}
+
+#container { 
+  position: fixed;
+  top: 10pt;
+  left: 10pt;
+  bottom: 10pt;
+  right: 10pt;
+  overflow: auto; 
+  display: flex;
+  flex-direction: column;    
+}
+
+#navigation {
+  display:flex; 
+  flex-direction: row;
+  margin-bottom: 8pt;
+}
+
+#content {
+  flex-grow:1;     
+  min-height:0;  
+}
+
+#sensors {  
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;    
+}
+
+#sensors table {
+  margin: auto
+}
+
+#sensors td { 
+  height: 40pt 
+}
+
+#sensors td.name { 
+  text-align: right; 
+  font-family: 'Ubuntu', sans-serif; 
+  font-size: 18pt 
+}
+
+#sensors td.symbol { 
+  text-align: center; 
+  vertical-align: middle; padding: 6pt;
+}
+
+#sensors td.value { 
+  padding-right: 15pt; 
+  text-align: right; 
+  width: 110pt;  
+  font-family: 'Ubuntu Mono', monospace; 
+  font-size:40pt 
+}
+
+#sensors td.unit { 
+  padding-left:0pt; 
+  padding-bottom: 12pt; 
+  font-family: 'Ubuntu', sans-serif; 
+  font-size: 15pt; 
+  line-height: 15pt; 
+  vertical-align: bottom; 
+}
+
+#sensors td.symbol img { 
+  display: block;
+  height: 50pt;
+  padding-right: 15pt; 
+  display: inline; 
+  margin: auto; 
+}

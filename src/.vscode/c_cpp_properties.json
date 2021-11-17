@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/home/pkolaczk/Arduino/libraries/AceRoutine/src",
+                "/home/pkolaczk/Arduino/libraries/AceTime/src",
+                "/home/pkolaczk/Arduino/libraries/Time",
+                "/home/pkolaczk/Arduino/libraries/PMS_Library/src",
+                "/home/pkolaczk/Arduino/libraries/NTPClient",
+                "/home/pkolaczk/Arduino/libraries/DHTNew-0.4.0",
+                "/home/pkolaczk/Arduino/libraries/LiquidCrystal_I2C-master",
+                "/home/pkolaczk/.arduino15/packages/esp8266/tools/**",
+                "/home/pkolaczk/.arduino15/packages/esp8266/hardware/**",
+                "${workspaceFolder}/**",
+                "/opt/arduino-1.8.10/libraries/**",
+                "/home/pkolaczk/Arduino/libraries/**",
+                "/home/pkolaczk/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/**"
+            ],
+            "defines": [
+                "USBCON"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}

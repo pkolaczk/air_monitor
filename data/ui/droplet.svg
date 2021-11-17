@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   stroke-miterlimit="10"
+   font-weight="normal"
+   font-style="normal"
+   font-size="12"
+   version="1.1"
+   id="svg899"
+   sodipodi:docname="droplet.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   width="54.837738"
+   height="100"
+   style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto">
+  <metadata
+     id="metadata903">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2490"
+     inkscape:window-height="1536"
+     id="namedview901"
+     showgrid="false"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="117.0397"
+     inkscape:cy="-7.8304554"
+     inkscape:window-x="1990"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg899"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <!--Unicode Character 'BLACK DROPLET' (U+1F322)-->
+  <defs
+     id="genericDefs" />
+  <g
+     id="g897"
+     transform="matrix(0.3950934,0,0,0.38438438,-9.6118717,-50.324324)"
+     style="stroke-width:0.99989361;stroke-miterlimit:10;stroke-dasharray:none">
+    <g
+       id="g895"
+       style="stroke-width:0.99989361;stroke-miterlimit:10;stroke-dasharray:none">
+      <path
+         d="m 163.125,296.2969 q 0,28.5469 -20.3906,48.6562 -20.3906,20.1094 -49.0782,20.1094 -28.5468,0 -48.9374,-20.1094 -20.3907,-20.1093 -20.3907,-48.6562 0,-25.7344 22.9219,-51.1875 l 5.0625,-5.625 q 17.7187,-19.6875 26.7187,-38.25 8.2969,-16.875 14.625,-44.2969 6.4688,27.4219 14.7657,44.2969 9.1406,18.7031 26.7187,38.25 l 5.0625,5.625 q 22.9219,25.4531 22.9219,51.1875 z"
+         id="path893"
+         inkscape:connector-curvature="0"
+         style="stroke:none;stroke-width:0.99989361;stroke-miterlimit:10;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <style> 
+    @media(orientation: portrait) {
+      td { height: 80pt }
+      td.name { text-align:right; font-family: 'Ubuntu', sans-serif; font-size: 30pt }
+      td.symbol { text-align:center; vertical-align:middle; padding:12pt;}
+      td.value { padding-right:20pt; text-align:right; width:210pt;  font-family: 'Ubuntu Mono', monospace; font-size:80pt }
+      td.unit { padding-left:0pt; padding-bottom: 20pt; font-family: 'Ubuntu', sans-serif; font-size: 30pt; line-height: 30pt; vertical-align:bottom; }
+      td.symbol img { padding-right: 20pt; display:inline; margin:auto; height:80pt }
+    }
+
+    @media(orientation: landscape) {
+      td { height: 40pt }
+      td.name { text-align:right; font-family: 'Ubuntu', sans-serif; font-size: 18pt }
+      td.symbol { text-align:center; vertical-align:middle; padding:6pt;}
+      td.value { padding-right:15pt; text-align:right; width:110pt;  font-family: 'Ubuntu Mono', monospace; font-size:40pt }
+      td.unit { padding-left:0pt; padding-bottom: 12pt; font-family: 'Ubuntu', sans-serif; font-size: 15pt; line-height: 15pt; vertical-align:bottom; }
+      td.symbol img { padding-right: 15pt; display:inline; margin:auto; height:40pt }
+    }
+
+  </style>
+
+  <script type="text/javascript">
+
+  var noValue = "&horbar;".repeat(5);
+  
+  function warnColor(value, limit1, limit2, ready) {
+    if (ready == 0)
+      return "#A0A0A0";  // gray
+    else if (value <= limit1)
+      return "#008400";  // green
+    else if (value <= limit2)
+      return "#FF8E00";  // orange
+    else 
+      return "#CF0000";  // red
+  }
+
+  function formatPm(value, limit1, limit2, ready) {
+    return "<span style=\"color:" + warnColor(value, limit1, limit2, ready) + "\">" + value + "&nbsp;&nbsp;</span>";
+  }
+
+  function formatValue(value) {
+    return (value !== null && !isNaN(value))
+      ? value.toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1})
+      : noValue;
+  }
+
+  function display(temperature, humidity, pm10, pm2_5, pm1, pmReady) {
+    document.getElementById("temperature").innerHTML = formatValue(temperature);
+    document.getElementById("humidity").innerHTML = formatValue(humidity);        
+    document.getElementById("pm10").innerHTML = pm10 !== null ? formatPm(pm10, 40, 100, pmReady) : noValue;
+    document.getElementById("pm2_5").innerHTML = pm2_5 !== null ? formatPm(pm2_5, 25, 80, pmReady) : noValue;        
+    document.getElementById("pm1").innerHTML = pm1 !== null ? formatPm(pm1, 15, 40, pmReady) : noValue;           
+  }
+
+  function update() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          var data = JSON.parse(this.responseText);
+          display(data.temperature, data.humidity, data.pm10, data.pm2_5, data.pm1, data.pmready);
+        }
+        else {
+          display(null, null, null, null, null);
+        }       
+      }
+    }
+    req.open('GET', '/sensor');
+    req.send();
+  } 
+
+  window.setInterval(update, 2000);
+ </script>
+</head>
+
+<body>
+  <div style="display:table; position: absolute; height: 100%; width: 100%">
+  <div style="display:table-cell; vertical-align:middle">
+    <table style="margin:auto">
+      <tr>
+        <td class="name"></td>
+        <td class="symbol"><img src="thermometer.svg"/></td>
+        <td class="value"><span id="temperature"></span></td>
+        <td class="unit">&#x2103;</td>
+      </tr> 
+      <tr>
+        <td class="name"></td>
+        <td class="symbol"><img src="droplet.svg"/></td>
+        <td class="value"><span id="humidity"></span></td>
+        <td class="unit">&percnt;</td>
+      </tr>
+      <tr>
+        <td class="name">PM 10</td>
+        <td class="symbol"><img src="gas-mask.svg"/></td>
+        <td class="value"><span id="pm10"></span></td>
+        <td class="unit">μg/m³</td>
+      </tr>
+      <tr>
+	<td class="name">PM 2,5</td>
+        <td class="symbol"><img src="gas-mask.svg"/></td>
+        <td class="value"><span id="pm2_5"></span></td>
+        <td class="unit">μg/m³</td>
+      </tr>
+      <tr>
+        <td class="name">PM 1</td>
+        <td class="symbol"><img src="gas-mask.svg"/></td>
+        <td class="value"><span id="pm1"></span></td>
+        <td class="unit">μg/m³</td>
+      </tr>
+
+      <script>display($temperature, $humidity, $pm10, $pm2_5, $pm1, $pmready);</script>
+    </table>
+  </div>
+  </div>
+</body>
+
+
+</html>

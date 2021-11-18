@@ -2,6 +2,7 @@
 
 #include <AceTime.h>
 #include <Arduino.h>
+#include <Astra.h>
 #include <ESP8266WiFi.h>
 #include <FS.h>
 #include <Wire.h>
@@ -15,6 +16,7 @@
 #include "Log.h"
 #include "ThSensor.h"
 #include "PmSensor.h"
+#include "Publisher.h"
 #include "WebServer.h"
 
 using namespace ace_time;
@@ -34,10 +36,13 @@ ThSensor thSensor(PIN_D7);
 PmSensor pmSensor(PIN_D5, PIN_D6);
 WebServer server(80, thSensor, pmSensor);
 Lcd lcd(0x27, PIN_D3);
-RH_ASK receiver(2000, PIN_D8);
+Publisher publisher(thSensor, pmSensor, systemClock);
 
+RH_ASK receiver(2000, PIN_D8);
 char buf[RH_ASK_MAX_MESSAGE_LEN];
 uint8_t buflen = sizeof(buf);
+
+
 
 void setupWiFi() {
   Serial.println("Reading network credentials SPIFFS...");    
@@ -92,6 +97,7 @@ void setup() {
   server.begin();
   if (receiver.init()) 
     Serial.println("RF433 receiver initialized ok");
+  publisher.init();
 }
 
 
@@ -103,6 +109,7 @@ void loop() {
   pmSensor.loop();  
   maybeAppendThLog();
   maybeAppendPmLog();  
+  publisher.loop();
 
   if (receiver.recv((uint8_t*) buf, &buflen)) 
     Serial.printf("Received temperature: %d.%d\n", buf[0] - 100, buf[1]);
@@ -117,5 +124,6 @@ void loop() {
   lcd.setPM1(pmSensor.getPm1());
   lcd.setPM2_5(pmSensor.getPm2_5());
   lcd.setPM10(pmSensor.getPm10());  
+  
 }
 

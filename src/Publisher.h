@@ -19,16 +19,27 @@ struct Measurement {
 // Publishes sensor readouts to Astra database
 class Publisher {
 public:
+    // Creates a new publisher that will read the temperature and humidity
+    // from the `th` object, air pollution information from the `pm` sensor object,
+    // and current NTP-synchronized timestamp from `clock`.
     Publisher(ThSensor& th, PmSensor& pm, Clock& clock);
     
-    // Connects to Astra
+    // Connects to Astra.
+    // The credentials needs to be placed in the SPIFFS filesystem in 
+    // file /data/secret/astra.txt. The file should consist of 4 lines:
+    // 1. database uuid
+    // 2. region 
+    // 3. username (accound identifier)
+    // 4. password (Astra token)
     void init();
 
     // Must be called in the main loop of the program, 
-    // will periodically publish sensor readouts
+    // will publish sensor readouts, every 10-minutes.
+    // It checks if the sensors are ready by calling `isReady()` on them
+    // before fetching the data.
     void loop();
 
-    // Reads sensor values and sends them to Astra database
+    // Reads sensor values and sends them to Astra database.
     void publish();
 
 

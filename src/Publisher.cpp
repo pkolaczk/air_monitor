@@ -46,7 +46,6 @@ void Publisher::loop() {
 }
 
 void Publisher::read(Measurement& meas) {
-    // TODO: handle time zone
     acetime_t time = clock.getNow();
     LocalDateTime ldt = LocalDateTime::forEpochSeconds(time);
     snprintf(meas.day, sizeof(meas.day), "%04d-%02d-%02d", 
@@ -67,7 +66,7 @@ void Publisher::publish() {
     Measurement meas;
     read(meas);
     
-    struct AstraClient::KeyVal columns[8] = { 
+    struct AstraClient::KeyVal columns[10] = { 
         { "sensor_id", SENSOR_ID }, 
         { "day", meas.day }, 
         { "ts", meas.timestamp }, 
@@ -75,7 +74,9 @@ void Publisher::publish() {
         { "humidity", meas.humidity }, 
         { "pm01", meas.pm1 }, 
         { "pm02", meas.pm2_5 }, 
-        { "pm10", meas.pm10 } 
+        { "pm10", meas.pm10 },
+        { "latitude", "52.237049" },
+        { "longitude", "21.017532" } 
     };
-    client.addRow(KEYSPACE, TABLE, 8, columns);
+    client.addRow(KEYSPACE, TABLE, 10, columns);
 }

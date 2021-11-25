@@ -12,7 +12,7 @@ I use WeMoS D1 Mini for easy programming through USB.
 - Automatically synchronizes with Internet time using NTP.
 - Reads temperature and humidity from a DHT22 sensor (can be easily modified to work with DHT11).
 - Reads particulate matter levels from Plantower PMS7003 laser sensor.
-- Displays air parameters on a 4x20 LCD screen attached using SPI bus.
+- Displays air parameters on a 4x20 LCD screen attached using I²C bus.
 - Supports LCD screen dimming through PWM control.
 - Stores sensor readouts in internal flash (1 MB of free space).
 - Runs a tiny webserver and displays air parameters on a minimalistic, responsive website.
